@@ -1,3 +1,8 @@
+/*
+  Criado por Isaque Barbosa
+  isaque.bm9@gmail.com
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
