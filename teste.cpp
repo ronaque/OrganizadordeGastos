@@ -3,7 +3,7 @@
 
 int main(int argc, char const *argv[])
 {
-
+  int aaa;
   std::fstream fout;
   int matriz[3][2] = {{11, 21}, {21, 22}, {31, 32}};
   fout.open("teste.txt");
