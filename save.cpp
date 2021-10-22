@@ -63,7 +63,7 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   // Salvar vetor de pagamentos
   if (pagamentos.size() > 0)
   {
-    arquivoPagamentos.open("data\\Pagamentos.txt");
+    arquivoPagamentos.open("data\\pagamentos.txt");
     for (int k = 0; k < pagamentos.size() - 1; k++)
     {
       arquivoPagamentos << pagamentos[k] << std::endl;
@@ -72,6 +72,6 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
     arquivoPagamentos << pagamentos[indexPagamentos];
   }
   else
-    arquivoPagamentos.open("data\\Pagamentos.txt", std::ios::out | std::ios::trunc);
+    arquivoPagamentos.open("data\\pagamentos.txt", std::ios::out | std::ios::trunc);
   arquivoPagamentos.close();
 }

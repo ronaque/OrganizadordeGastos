@@ -199,7 +199,7 @@ int main(int argc, char const *argv[])
 
   //////// Manipulação Entrada do arquivo Pagamentos
   std::fstream arquivoPagamentos;
-  arquivoPagamentos.open("data\\Pagamentos.txt");
+  arquivoPagamentos.open("data\\pagamentos.txt");
   // Recebimento vetor de pagamentos
   if (!is_empty(arquivoPagamentos))
   {
@@ -215,7 +215,7 @@ int main(int argc, char const *argv[])
 
   //////// Manipulação Entrada do arquivo Assinaturas
   std::fstream arquivoAssinaturas;
-  arquivoAssinaturas.open("data\\Assinaturas.txt");
+  arquivoAssinaturas.open("data\\assinaturas.txt");
   //Recebimento do vetor de assinaturas
   if (!is_empty(arquivoAssinaturas))
   {
