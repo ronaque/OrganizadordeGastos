@@ -8,4 +8,4 @@ g++ main.cpp save.cpp mes.cpp pagamento.cpp assinatura.cpp -o OrganizadordeGasto
 
 ## Execução
 
-Para a execução, basta digitar "OrganizadordeGastos"
+Basta abrir OrganizadordeGastos.exe

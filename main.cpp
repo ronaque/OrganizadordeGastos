@@ -15,6 +15,8 @@
 
 #include <time.h>
 
+#include <stdio.h>
+
 #include "include\main.h"
 // #include "include\pagamento.h"
 // #include "include\assinatura.h"
@@ -157,7 +159,7 @@ float sumAssinaturas(std::vector<Assinatura> assianturas)
 
 int main(int argc, char const *argv[])
 {
-
+  system("chcp 65001");
   // Tempo
   time_t timeT = time(NULL);
   struct tm *lTime = localtime(&timeT);
