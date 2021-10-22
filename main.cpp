@@ -304,6 +304,7 @@ int main(int argc, char const *argv[])
     // std::cout << mesesPagamentos[11].mes << " " << mesesPagamentos[11].ano << " " << mesesPagamentos[11].valorTotal;
 
     std::cout
+        << std::endl
         << "O que deseja fazer?" << std::endl
         << "1 - Adicionar pagamento" << std::endl
         << "2 - Adicionar assinatura" << std::endl
@@ -322,12 +323,14 @@ int main(int argc, char const *argv[])
     else if (linha == "adicionar pagamento" || linha == "1")
     {
       Pagamento novoPagamento;
+      char lixo;
       // Criação do novo objeto
-      std::cout << "Digite o nome do pagamento, a quantidade de parcelas e o valor de cada parcela" << std::endl;
+      std::cout << "Digite o nome do pagamento (Nome deve ser simples), a quantidade de parcelas e o valor total do produto" << std::endl;
       std::cin >> novoPagamento.nome >> novoPagamento.quantParcelas >> novoPagamento.valor;
-      if (novoPagamento.quantParcelas < 1 && novoPagamento.quantParcelas > 12)
+      std::cin.ignore();
+      if (novoPagamento.quantParcelas < 1 || novoPagamento.quantParcelas > 12)
       {
-        std::cout << "Quantidade inválida";
+        std::cout << "Quantidade inválida de parcelas";
       }
       else
       {
@@ -338,7 +341,7 @@ int main(int argc, char const *argv[])
         for (int i = 0; i < novoPagamento.quantParcelas; i++)
         {
           mesesPagamentos[i].objetosMes.push_back(novoPagamento.nome);
-          mesesPagamentos[i].valorTotal += novoPagamento.valor;
+          mesesPagamentos[i].valorTotal += (novoPagamento.valor / novoPagamento.quantParcelas);
         }
       }
     }
@@ -349,6 +352,7 @@ int main(int argc, char const *argv[])
       Assinatura novaAssinatura;
       std::cout << "Digite o nome para a assinatura e o valor dela" << std::endl;
       std::cin >> novaAssinatura.nome >> novaAssinatura.valor;
+      std::cin.ignore();
       assinaturas.push_back(novaAssinatura);
 
       // Adição da assinatura nos 12 meses atuais
@@ -384,6 +388,10 @@ int main(int argc, char const *argv[])
       int pagamentosSize = pagamentos.size();
       for (int i = 0; i < pagamentosSize; i++)
         pagamentos.pop_back();
+    }
+    else
+    {
+      std::cout << "Excepction";
     }
   }
   //////// Fim Programa
