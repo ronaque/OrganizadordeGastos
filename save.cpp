@@ -14,7 +14,7 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   // Salvar vetor de meses
   if (mesesPagamentos.size() > 0)
   {
-    arquivoMeses.open("data\\mesesPagamentos.txt");
+    arquivoMeses.open("data\\mesesPagamentos.txt", std::ios::out);
     for (int i = 0; i < mesesPagamentos.size() - 1; i++)
     {
       arquivoMeses << mesesPagamentos[i] << " ";
@@ -43,7 +43,7 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   // Salvar vetor de assinaturas
   if (assinaturas.size() > 1)
   {
-    arquivoAssinaturas.open("data\\assinaturas.txt");
+    arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out);
     for (int k = 0; k < assinaturas.size() - 1; k++)
     {
       arquivoAssinaturas << assinaturas[k].nome << " " << assinaturas[k].valor << std::endl;
@@ -53,7 +53,6 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   }
   else
     arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out | std::ios::trunc);
-
   arquivoAssinaturas.close();
 
   // std::cout << "Salvando Pagamentos";
@@ -63,7 +62,7 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   // Salvar vetor de pagamentos
   if (pagamentos.size() > 0)
   {
-    arquivoPagamentos.open("data\\pagamentos.txt");
+    arquivoPagamentos.open("data\\pagamentos.txt", std::ios::out);
     for (int k = 0; k < pagamentos.size() - 1; k++)
     {
       arquivoPagamentos << pagamentos[k] << std::endl;
