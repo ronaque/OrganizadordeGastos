@@ -159,7 +159,8 @@ float sumAssinaturas(std::vector<Assinatura> assianturas)
 
 int main(int argc, char const *argv[])
 {
-  system("chcp 65001");
+
+  setlocale(LC_ALL, "Portuguese_Brasil");
   // Tempo
   time_t timeT = time(NULL);
   struct tm *lTime = localtime(&timeT);
