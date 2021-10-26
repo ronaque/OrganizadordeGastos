@@ -1,11 +1,14 @@
 /*
   Criado por Isaque Barbosa
   isaque.bm9@gmail.com
+
+  cmd /k cd C:\Users\isaqu\Documents\Escolaridade\Projetos de Programação\C\OrganizadorGastos
 */
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 
 #include <string>
 #include <vector>
@@ -81,6 +84,17 @@ float sumAssinaturas(std::vector<Assinatura> assianturas)
     sum += assianturas[i].valor;
   }
   return sum;
+}
+
+void printOptions()
+{
+  std::cout << std::endl
+            << "O que deseja fazer?" << std::endl
+            << "1 - Adicionar pagamento" << std::endl
+            << "2 - Adicionar assinatura" << std::endl
+            << "3 - Ver Pagamentos" << std::endl
+            << "4 - Reset" << std::endl
+            << "5 - Sair" << std::endl;
 }
 
 // void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
@@ -159,8 +173,9 @@ float sumAssinaturas(std::vector<Assinatura> assianturas)
 
 int main(int argc, char const *argv[])
 {
-
-  setlocale(LC_ALL, "Portuguese_Brasil");
+  system("chcp 65001");
+  system("cls");
+  // setlocale(LC_ALL, "Portuguese-Brazil");
   // Tempo
   time_t timeT = time(NULL);
   struct tm *lTime = localtime(&timeT);
@@ -286,7 +301,7 @@ int main(int argc, char const *argv[])
   }
 
   //////// Programa
-
+  printOptions();
   while (!quit)
   {
     // for (int i = 0; i < assinaturas.size(); i++)
@@ -306,37 +321,50 @@ int main(int argc, char const *argv[])
 
     // std::cout << mesesPagamentos[11].mes << " " << mesesPagamentos[11].ano << " " << mesesPagamentos[11].valorTotal;
 
-    std::cout
-        << std::endl
-        << "O que deseja fazer?" << std::endl
-        << "1 - Adicionar pagamento" << std::endl
-        << "2 - Adicionar assinatura" << std::endl
-        << "3 - Ver Pagamentos" << std::endl
-        << "4 - Reset" << std::endl
-        << "5 - Sair" << std::endl;
+    // std::cout << std::endl
+    //           << "O que deseja fazer?" << std::endl
+    //           << "1 - Adicionar pagamento" << std::endl
+    //           << "2 - Adicionar assinatura" << std::endl
+    //           << "3 - Ver Pagamentos" << std::endl
+    //           << "4 - Reset" << std::endl
+    //           << "5 - Sair" << std::endl;
+
     std::getline(std::cin, linha);
     linha = tolowerString(linha);
 
     ///// Quit
     if (linha == "quit" || linha == "5")
     {
+      std::cout << "Saindo do programa";
       quit = true;
     }
+
     ///// Adicioanr Pagamentos
     else if (linha == "adicionar pagamento" || linha == "1")
     {
       Pagamento novoPagamento;
       char lixo;
+
       // Criação do novo objeto
       std::cout << "Digite o nome do pagamento (Nome deve ser simples), a quantidade de parcelas e o valor total do produto" << std::endl;
       std::cin >> novoPagamento.nome >> novoPagamento.quantParcelas >> novoPagamento.valor;
       std::cin.ignore();
+
+      // Erro número de parcelas
       if (novoPagamento.quantParcelas < 1 || novoPagamento.quantParcelas > 12)
       {
         std::cout << "Quantidade inválida de parcelas";
       }
+      // Adicionar erro de nome reptido
+      // Erro de valor negativo
+      else if (novoPagamento.valor <= 0)
+      {
+        std::cout << "Valor não permitido";
+      }
       else
       {
+        std::cout << "Adicionado o pagamento " << novoPagamento.nome << " em " << novoPagamento.quantParcelas << " parcelas de R$" << std::fixed << std::setprecision(2) << novoPagamento.valor / novoPagamento.quantParcelas << std::endl;
+
         //Adiciona o pagamento ao vetor de pagamentos
         pagamentos.push_back(novoPagamento);
 
@@ -347,6 +375,7 @@ int main(int argc, char const *argv[])
           mesesPagamentos[i].valorTotal += (novoPagamento.valor / novoPagamento.quantParcelas);
         }
       }
+      printOptions();
     }
 
     ///// Adicionar assinatura
@@ -364,6 +393,8 @@ int main(int argc, char const *argv[])
         mesesPagamentos[i].objetosMes.push_back(novaAssinatura.nome);
         mesesPagamentos[i].valorTotal += novaAssinatura.valor;
       }
+      std::cout << "Adicionado a assinatura " << novaAssinatura.nome << " de R$" << std::fixed << std::setprecision(2) << novaAssinatura.valor << std::endl;
+      printOptions();
     }
 
     ///// Ver Pagamentos
@@ -372,13 +403,14 @@ int main(int argc, char const *argv[])
       // Cada mês em uma linha
       for (int i = 0; i < mesesPagamentos.size(); i++)
       {
-        std::cout << toMonthString(mesesPagamentos[i].mes) << "/" << mesesPagamentos[i].ano << ": ";
+        std::cout << toMonthString(mesesPagamentos[i].mes) << "/" << mesesPagamentos[i].ano << " - Pagamentos do mês: | ";
         for (int k = 0; k < mesesPagamentos[i].objetosMes.size(); k++)
         {
-          std::cout << mesesPagamentos[i].objetosMes[k] << " ";
+          std::cout << mesesPagamentos[i].objetosMes[k] << " | ";
         }
-        std::cout << "R$:" << mesesPagamentos[i].valorTotal << std::endl;
+        std::cout << "Valor total de R$:" << std::fixed << std::setprecision(2) << mesesPagamentos[i].valorTotal << std::endl;
       }
+      printOptions();
     }
     else if (linha == "reset" || linha == "4")
     {
@@ -391,10 +423,13 @@ int main(int argc, char const *argv[])
       int pagamentosSize = pagamentos.size();
       for (int i = 0; i < pagamentosSize; i++)
         pagamentos.pop_back();
+      std::cout << "Lista de pagamentos resetada" << std::endl;
+      printOptions();
     }
     else
     {
-      std::cout << "Excepction";
+      std::cout << "Digite uma das opções" << std::endl;
+      std::cin.ignore();
     }
   }
   //////// Fim Programa
@@ -467,6 +502,5 @@ int main(int argc, char const *argv[])
   // else
   //   arquivoPagamentos.open("data\\Pagamentos.txt", std::ios::out | std::ios::trunc);
   // arquivoPagamentos.close();
-
   return 0;
 }
