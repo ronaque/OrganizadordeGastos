@@ -21,10 +21,6 @@
 #include <stdio.h>
 
 #include "include\main.h"
-// #include "include\pagamento.h"
-// #include "include\assinatura.h"
-// #include "include\mes.h"
-// #include "include\save.h"
 
 std::string tolowerString(std::string string)
 {
@@ -97,85 +93,11 @@ void printOptions()
             << "5 - Sair" << std::endl;
 }
 
-// void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
-//           std::vector<Assinatura> assinaturas)
-// {
-//   std::fstream arquivoMeses;
-//   std::fstream arquivoAssinaturas;
-//   std::fstream arquivoPagamentos;
-//   std::cout << "Salvando mesesPagamentos";
-
-//   //////// Manipulação salvar arquivo mesesPagamentos
-//   // Salvar vetor de meses
-//   if (mesesPagamentos.size() > 0)
-//   {
-//     arquivoMeses.open("data\\mesesPagamentos.txt");
-//     for (int i = 0; i < mesesPagamentos.size() - 1; i++)
-//     {
-//       arquivoMeses << mesesPagamentos[i] << " ";
-//       for (int k = 0; k < mesesPagamentos[i].objetosMes.size(); k++)
-//       {
-//         arquivoMeses << mesesPagamentos[i].objetosMes[k] << " ";
-//       }
-//       arquivoMeses << std::endl;
-//     }
-//     arquivoMeses << mesesPagamentos[11];
-//     for (int k = 0; k < mesesPagamentos[11].objetosMes.size(); k++)
-//     {
-//       arquivoMeses << mesesPagamentos[11].objetosMes[k] << " ";
-//     }
-//   }
-//   else
-//   {
-//     arquivoMeses.open("data\\mesesPagamentos.txt", std::ofstream::out | std::ofstream::trunc);
-//   }
-//   arquivoMeses.close();
-
-//   std::cout << "Salvando Assinturas";
-
-//   //////// Manipulação salvar arquivo Assinaturas
-//   int indexassinaturas = 0;
-//   // Salvar vetor de assinaturas
-//   if (assinaturas.size() > 1)
-//   {
-//     arquivoAssinaturas.open("data\\assinaturas.txt");
-//     for (int k = 0; k < assinaturas.size() - 1; k++)
-//     {
-//       arquivoAssinaturas << assinaturas[k].nome << " " << assinaturas[k].valor << std::endl;
-//       indexassinaturas++;
-//     }
-//     arquivoAssinaturas << assinaturas[indexassinaturas].nome << " " << assinaturas[indexassinaturas].valor;
-//   }
-//   else
-//     arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out | std::ios::trunc);
-
-//   arquivoAssinaturas.close();
-
-//   std::cout << "Salvando Pagamentos";
-
-//   //////// Manipulação salvar arquivo Pagamentos
-//   int indexPagamentos = 0;
-//   // Salvar vetor de pagamentos
-//   if (pagamentos.size() > 0)
-//   {
-//     arquivoPagamentos.open("data\\Pagamentos.txt");
-//     for (int k = 0; k < pagamentos.size() - 1; k++)
-//     {
-//       arquivoPagamentos << pagamentos[k] << std::endl;
-//       indexPagamentos++;
-//     }
-//     arquivoPagamentos << pagamentos[indexPagamentos];
-//   }
-//   else
-//     arquivoPagamentos.open("data\\Pagamentos.txt", std::ios::out | std::ios::trunc);
-//   arquivoPagamentos.close();
-// }
-
 int main(int argc, char const *argv[])
 {
   system("chcp 65001");
   system("cls");
-  // setlocale(LC_ALL, "Portuguese-Brazil");
+
   // Tempo
   time_t timeT = time(NULL);
   struct tm *lTime = localtime(&timeT);
@@ -304,30 +226,6 @@ int main(int argc, char const *argv[])
   printOptions();
   while (!quit)
   {
-    // for (int i = 0; i < assinaturas.size(); i++)
-    // {
-    //   std::cout << assinaturas[i] << std::endl;
-    // }
-
-    // for (int i = 0; i < mesesPagamentos.size(); i++)
-    // {
-    //   std::cout << toMonthString(mesesPagamentos[i].mes) << "/" << mesesPagamentos[i].ano << ": ";
-    //   for (int k = 0; k < mesesPagamentos[i].objetosMes.size(); k++)
-    //   {
-    //     std::cout << mesesPagamentos[i].objetosMes[k] << " ";
-    //   }
-    //   std::cout << "R$:" << mesesPagamentos[i].valorTotal << std::endl;
-    // }
-
-    // std::cout << mesesPagamentos[11].mes << " " << mesesPagamentos[11].ano << " " << mesesPagamentos[11].valorTotal;
-
-    // std::cout << std::endl
-    //           << "O que deseja fazer?" << std::endl
-    //           << "1 - Adicionar pagamento" << std::endl
-    //           << "2 - Adicionar assinatura" << std::endl
-    //           << "3 - Ver Pagamentos" << std::endl
-    //           << "4 - Reset" << std::endl
-    //           << "5 - Sair" << std::endl;
 
     std::getline(std::cin, linha);
     linha = tolowerString(linha);
@@ -433,74 +331,7 @@ int main(int argc, char const *argv[])
     }
   }
   //////// Fim Programa
-  arquivoMeses.open("data\\mesesPagamentos.txt");
-
   Save(mesesPagamentos, pagamentos, assinaturas);
-  // std::cout << "Salvando mesesPagamentos";
 
-  // //////// Manipulação salvar arquivo mesesPagamentos
-  // // Salvar vetor de meses
-  // if (mesesPagamentos.size() > 0)
-  // {
-  //   arquivoMeses.open("data\\mesesPagamentos.txt");
-  //   for (int i = 0; i < mesesPagamentos.size() - 1; i++)
-  //   {
-  //     arquivoMeses << mesesPagamentos[i] << " ";
-  //     for (int k = 0; k < mesesPagamentos[i].objetosMes.size(); k++)
-  //     {
-  //       arquivoMeses << mesesPagamentos[i].objetosMes[k] << " ";
-  //     }
-  //     arquivoMeses << std::endl;
-  //   }
-  //   arquivoMeses << mesesPagamentos[11];
-  //   for (int k = 0; k < mesesPagamentos[11].objetosMes.size(); k++)
-  //   {
-  //     arquivoMeses << mesesPagamentos[11].objetosMes[k] << " ";
-  //   }
-  // }
-  // else
-  // {
-  //   arquivoMeses.open("data\\mesesPagamentos.txt", std::ofstream::out | std::ofstream::trunc);
-  // }
-  // arquivoMeses.close();
-
-  // std::cout << "Salvando Assinturas";
-
-  // //////// Manipulação salvar arquivo Assinaturas
-  // int indexassinaturas = 0;
-  // // Salvar vetor de assinaturas
-  // if (assinaturas.size() > 1)
-  // {
-  //   arquivoAssinaturas.open("data\\assinaturas.txt");
-  //   for (int k = 0; k < assinaturas.size() - 1; k++)
-  //   {
-  //     arquivoAssinaturas << assinaturas[k].nome << " " << assinaturas[k].valor << std::endl;
-  //     indexassinaturas++;
-  //   }
-  //   arquivoAssinaturas << assinaturas[indexassinaturas].nome << " " << assinaturas[indexassinaturas].valor;
-  // }
-  // else
-  //   arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out | std::ios::trunc);
-
-  // arquivoAssinaturas.close();
-
-  // std::cout << "Salvando Pagamentos";
-
-  // //////// Manipulação salvar arquivo Pagamentos
-  // int indexPagamentos = 0;
-  // // Salvar vetor de pagamentos
-  // if (pagamentos.size() > 0)
-  // {
-  //   arquivoPagamentos.open("data\\Pagamentos.txt");
-  //   for (int k = 0; k < pagamentos.size() - 1; k++)
-  //   {
-  //     arquivoPagamentos << pagamentos[k] << std::endl;
-  //     indexPagamentos++;
-  //   }
-  //   arquivoPagamentos << pagamentos[indexPagamentos];
-  // }
-  // else
-  //   arquivoPagamentos.open("data\\Pagamentos.txt", std::ios::out | std::ios::trunc);
-  // arquivoPagamentos.close();
   return 0;
 }

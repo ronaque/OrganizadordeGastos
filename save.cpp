@@ -8,7 +8,6 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   std::fstream arquivoMeses;
   std::fstream arquivoAssinaturas;
   std::fstream arquivoPagamentos;
-  // std::cout << "Salvando mesesPagamentos";
 
   //////// Manipulação salvar arquivo mesesPagamentos
   // Salvar vetor de meses
@@ -36,8 +35,6 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   }
   arquivoMeses.close();
 
-  // std::cout << "Salvando Assinturas";
-
   //////// Manipulação salvar arquivo Assinaturas
   int indexassinaturas = 0;
   // Salvar vetor de assinaturas
@@ -54,8 +51,6 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   else
     arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out | std::ios::trunc);
   arquivoAssinaturas.close();
-
-  // std::cout << "Salvando Pagamentos";
 
   //////// Manipulação salvar arquivo Pagamentos
   int indexPagamentos = 0;
