@@ -1,6 +1,8 @@
 data/assinaturas.txt
 data/mesesPagamentos.txt
 data/pagamentos.txt
+data/copy.txt
+data/teste.txt
 teste.cpp
 a.exe
 OrganizadordeGastos.exe
