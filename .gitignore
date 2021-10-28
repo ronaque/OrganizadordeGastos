@@ -1,4 +1,6 @@
-/data/*
+data/assinaturas.txt
+data/mesesPagamentos.txt
+data/pagamentos.txt
 teste.cpp
 a.exe
 OrganizadordeGastos.exe
