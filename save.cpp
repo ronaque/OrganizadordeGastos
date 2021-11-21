@@ -38,7 +38,7 @@ void Save(std::vector<Mes> mesesPagamentos, std::vector<Pagamento> pagamentos,
   //////// Manipulação salvar arquivo Assinaturas
   int indexassinaturas = 0;
   // Salvar vetor de assinaturas
-  if (assinaturas.size() > 1)
+  if (assinaturas.size() > 0)
   {
     arquivoAssinaturas.open("data\\assinaturas.txt", std::ios::out);
     for (int k = 0; k < assinaturas.size() - 1; k++)

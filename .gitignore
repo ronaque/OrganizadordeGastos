@@ -6,4 +6,7 @@ data/teste.txt
 teste.cpp
 a.exe
 OrganizadordeGastos.exe
-.vscode/c_cpp_properties.json
+.vscode/*
+compiler.bat
+compiler.sh
+teste.exe

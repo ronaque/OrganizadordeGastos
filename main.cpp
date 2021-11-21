@@ -116,7 +116,7 @@ int main(int argc, char const *argv[])
 
   //////// Manipulação Entrada do arquivo mesesPagamentos
   std::fstream arquivoMeses;
-  arquivoMeses.open("\\data\\mesesPagamentos.txt");
+  arquivoMeses.open("data\\mesesPagamentos.txt");
   // Recebimento vetor de meses
   if (!is_empty(arquivoMeses))
   {
@@ -140,7 +140,7 @@ int main(int argc, char const *argv[])
 
   //////// Manipulação Entrada do arquivo Pagamentos
   std::fstream arquivoPagamentos;
-  arquivoPagamentos.open("\\data\\pagamentos.txt");
+  arquivoPagamentos.open("data\\pagamentos.txt");
   // Recebimento vetor de pagamentos
   if (!is_empty(arquivoPagamentos))
   {
@@ -156,7 +156,7 @@ int main(int argc, char const *argv[])
 
   //////// Manipulação Entrada do arquivo Assinaturas
   std::fstream arquivoAssinaturas;
-  arquivoAssinaturas.open("\\data\\assinaturas.txt");
+  arquivoAssinaturas.open("data\\assinaturas.txt");
   //Recebimento do vetor de assinaturas
   if (!is_empty(arquivoAssinaturas))
   {
@@ -170,7 +170,7 @@ int main(int argc, char const *argv[])
   }
   arquivoAssinaturas.close();
 
-  //////// Atualização vetor de meses de acordo com a \\data atual | adição dos 12 meses
+  //////// Atualização vetor de meses de acordo com a data atual | adição dos 12 meses
   int indexMeses;
   if (mesesPagamentos.size() != 0)
   {
